@@ -17,3 +17,10 @@ here are the most common ways to prevent overfitting in neural networks:
 Get more training data. Reduce the capacity of the network. Add weight regularization. Add dropout. Two important approaches not covered in this guide are:
 data-augmentation batch normalization Remember that each method can help on its own, but often combining them can be even more effective. 
 
+######Project structure
+This project is composed of two major files:
+
+/Regression.ipynb: this file contains all the source code to train  and build our ML model with some test functions
+/tests/test_Regression.ipynb: this file contains  source code to testing too
+If you have any questions or improvements about this work, feel free to open an issue.
+
