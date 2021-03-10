@@ -24,3 +24,6 @@ This project is composed of two major files:
 /tests/test_Regression.ipynb: this file contains  source code to testing too
 If you have any questions or improvements about this work, feel free to open an issue.
 
+Aso Bozorgpanah: asob@cs.umu.se
+Mariam Taha: mariamt@cs.umu.se
+
