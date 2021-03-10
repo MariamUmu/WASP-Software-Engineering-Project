@@ -10,4 +10,10 @@ Indeed, deep learning models tend to be good at fitting to the training data, bu
 On the other hand, if the network has limited memorization resources, it will not be able to learn the mapping as easily. To minimize its loss, it will have to learn compressed representations that have more predictive power. At the same time, if you make your model too small, it will have difficulty fitting to the training data. There is a balance between "too much capacity" and "not enough capacity".
 Intuitively, a model with more parameters will have more "memorization capacity" and therefore will be able to easily learn a perfect dictionary-like mapping between training samples and their targets, a mapping without any generalization power, but this would be useless when making predictions on previously unseen data
 Unfortunately, there is no magical formula to determine the right size or architecture of your model (in terms of the number of layers, or the right size for each layer). You will have to experiment using a series of different architectures.
-To find an appropriate model size, it's best to start with relatively few layers and parameters, then begin increasing the size of the layers or adding new layers until you see diminishing returns on the validation loss
+To find an appropriate model size, it's best to start with relatively few layers and parameters, then begin increasing the size of the layers or adding new layers until you see diminishing returns on the validation loss.
+Some information about trending the training and validation losses This is apparent if you plot and compare the validation metrics to the training metrics.
+It's normal for there to be a small difference. If both metrics are moving in the same direction, everything is fine. If the validation metric begins to stagnate while the training metric continues to improve, you are probably close to overfitting. If the validation metric is going in the wrong direction, the model is clearly overfitting.
+here are the most common ways to prevent overfitting in neural networks:
+Get more training data. Reduce the capacity of the network. Add weight regularization. Add dropout. Two important approaches not covered in this guide are:
+data-augmentation batch normalization Remember that each method can help on its own, but often combining them can be even more effective. 
+
