@@ -1,46 +1,21 @@
 nbdiff Regression.ipynb (HEAD) Regression.ipynb
 --- Regression.ipynb (HEAD)  (no timestamp)
-+++ Regression.ipynb  2021-04-01 12:45:08.812845
++++ Regression.ipynb  2021-04-01 13:07:11.055333
 ## modified /cells/2/source:
-@@ -28,7 +28,7 @@ EPOCHS = 1000
- #defining function:Downloading the dataset
- def downloading_dataset(name,address):
-     dataset_path = keras.utils.get_file(name, address)
--return dataset_path
-+    return dataset_path
+@@ -75,10 +75,11 @@ def build_model():
+ model = build_model()
  
- #Importing the data using Pandas library
- def preprocessing_dataset(dataset_path,column_names):
-@@ -40,7 +40,7 @@ def preprocessing_dataset(dataset_path,column_names):
-     dataset = dataset.dropna()
-     dataset['Origin'] = dataset['Origin'].map({1: 'USA', 2: 'Europe', 3: 'Japan'})
-     dataset = pd.get_dummies(dataset, prefix='', prefix_sep='')
--return dataset
-+    return dataset
- #Spliting the data into train and test
- def split_dataset(dataset):
-     train_dataset = dataset.sample(frac=0.8,random_state=0)
-@@ -50,17 +50,18 @@ def split_dataset(dataset):
-     train_stats = train_dataset.describe()
-     train_stats.pop("MPG")
-     train_stats = train_stats.transpose()
--return train_stats,train_dataset,test_dataset
-+    return train_stats,train_dataset,test_dataset
+ #Inspecting the model
+-model.summary()
+-example_batch = normed_train_data[:10]
+-example_result = model.predict(example_batch)
+-example_result
++def inspect_model(normed_train_data):
++    model.summary()
++    example_batch = normed_train_data[:10]
++    example_result = model.predict(example_batch)
++    return example_result
  
- #Splitting features from labels
- def split_features(train_dataset,test_dataset):
-     train_labels = train_dataset.pop('MPG')
-     test_labels = test_dataset.pop('MPG')
--return   train_labels, test_labels
-+    return   train_labels, test_labels
- 
- #Normalizing the data
--def norm(x):
--  return (x - train_stats['mean']) / train_stats['std']
-+def norm(dataset,train_stats):
-+    return (dataset- train_stats['mean']) / train_stats['std']
-+
- normed_train_data = norm(train_dataset)
- normed_test_data = norm(test_dataset)
- 
+ #Training the model
+ EPOCHS = 1000
 
