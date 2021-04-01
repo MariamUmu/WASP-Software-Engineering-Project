@@ -1,30 +1,20 @@
 nbdiff Regression.ipynb (HEAD) Regression.ipynb
 --- Regression.ipynb (HEAD)  (no timestamp)
-+++ Regression.ipynb  2021-04-01 14:02:28.368953
++++ Regression.ipynb  2021-04-01 14:10:41.728627
 ## modified /cells/2/source:
-@@ -118,15 +118,18 @@ def prediction():
-     plt.xlabel("Prediction Error [MPG]")
-     x_ = plt.ylabel("Count")
+@@ -130,8 +130,9 @@ def plot_early_stop(plotter):
+     plt.ylim([0, 10])
+     plt.ylabel('MAE [MPG]')
      return plt.show()
--# The patience parameter is the amount of epochs to check for improvement
--early_stop = keras.callbacks.EarlyStopping(monitor='val_loss', patience=10)
- 
--early_history = model.fit(normed_train_data, train_labels, 
-+def plot_early_stop(plotter):
-+    # The patience parameter is the amount of epochs to check for improvement
-+    early_stop = keras.callbacks.EarlyStopping(monitor='val_loss', patience=10)
-+
-+    early_history = model.fit(normed_train_data, train_labels, 
-                     epochs=EPOCHS, validation_split = 0.2, verbose=0, 
-                     callbacks=[early_stop, tfdocs.modeling.EpochDots()])
--plotter.plot({'Early Stopping': early_history}, metric = "mae")
--plt.ylim([0, 10])
--plt.ylabel('MAE [MPG]')
-+    plotter.plot({'Early Stopping': early_history}, metric = "mae")
-+    plt.ylim([0, 10])
-+    plt.ylabel('MAE [MPG]')
-+    return plt.show()
- 
- loss, mae, mse = model.evaluate(normed_test_data, test_labels, verbose=2)
- print("Testing set Mean Abs Error: {:5.2f} MPG".format(mae))
+-
+-loss, mae, mse = model.evaluate(normed_test_data, test_labels, verbose=2)
+-print("Testing set Mean Abs Error: {:5.2f} MPG".format(mae))
+-print("Testing set MSE: {:5.2f} MPG".format(mse))
+-print("Testing set Loss: {:5.2f} MPG".format(loss))
++def model_evaluate():
++    loss, mae, mse = model.evaluate(normed_test_data, test_labels, verbose=2)
++    print("Testing set Mean Abs Error: {:5.2f} MPG".format(mae))
++    print("Testing set MSE: {:5.2f} MPG".format(mse))
++    print("Testing set Loss: {:5.2f} MPG".format(loss))
++    return 
 
