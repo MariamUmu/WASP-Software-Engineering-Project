@@ -1,0 +1,16 @@
+nbdiff Regression.ipynb (HEAD) Regression.ipynb
+--- Regression.ipynb (HEAD)  (no timestamp)
++++ Regression.ipynb  2021-04-01 10:15:13.632691
+## modified /cells/1/source:
+@@ -2,7 +2,7 @@
+ !pip install pytest
+ # Use seaborn for pairplot
+ !pip install seaborn
+-#another test
+-#testing git diff
++#another test 1
++#testing git diff2
+ # Use some functions from tensorflow_docs
+ !pip install git+https://github.com/tensorflow/docs
+
+
