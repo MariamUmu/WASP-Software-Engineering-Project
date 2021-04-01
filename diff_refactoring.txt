@@ -1,0 +1,44 @@
+nbdiff Regression.ipynb (HEAD) Regression.ipynb
+--- Regression.ipynb (HEAD)  (no timestamp)
++++ Regression.ipynb  2021-04-01 10:49:53.643216
+## modified /cells/2/source:
+@@ -23,24 +23,26 @@ import tensorflow_docs.modeling
+ print(tf.__version__)
+ name_db = "auto-mpg.data"
+ address_db = "http://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data"
++EPOCHS = 1000
+ #defining function:Downloading the dataset
+ def downloading_dataset(name,address):
+     dataset_path = keras.utils.get_file(name, address)
+ return dataset_path
+ 
+ #Importing the data using Pandas library
+-column_names = ['MPG','Cylinders','Displacement','Horsepower','Weight', 'Acceleration', 'Model Year', 'Origin']
+-raw_dataset = pd.read_csv(dataset_path, names=column_names, na_values = "?", comment='\t', sep=" ", skipinitialspace=True)
+-dataset = raw_dataset.copy()
+-dataset.tail()
+-
+-#Cleanin the data
+-dataset.isna().sum()
+-dataset = dataset.dropna()
+-dataset['Origin'] = dataset['Origin'].map({1: 'USA', 2: 'Europe', 3: 'Japan'})
+-dataset = pd.get_dummies(dataset, prefix='', prefix_sep='')
+-dataset.tail()
+-
++def preprocessing_dataset(columnNames):
++    column_names = ['MPG','Cylinders','Displacement','Horsepower','Weight', 'Acceleration', 'Model Year', 'Origin']
++    raw_dataset = pd.read_csv(dataset_path, names=column_names, na_values = "?", comment='\t', sep=" ", skipinitialspace=True)
++    dataset = raw_dataset.copy()
++    dataset.tail()
++
++    #Cleanin the data
++    dataset.isna().sum()
++    dataset = dataset.dropna()
++    dataset['Origin'] = dataset['Origin'].map({1: 'USA', 2: 'Europe', 3: 'Japan'})
++    dataset = pd.get_dummies(dataset, prefix='', prefix_sep='')
++    dataset.tail()
++return dataset
+ #Spliting the data into train and test
+ train_dataset = dataset.sample(frac=0.8,random_state=0)
+ test_dataset = dataset.drop(train_dataset.index)
+
