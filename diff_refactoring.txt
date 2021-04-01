@@ -1,13 +1,12 @@
 nbdiff Regression.ipynb (HEAD) Regression.ipynb
 --- Regression.ipynb (HEAD)  (no timestamp)
-+++ Regression.ipynb  2021-04-01 10:36:11.020860
++++ Regression.ipynb  2021-04-01 10:39:13.302409
 ## modified /cells/2/source:
-@@ -21,7 +21,7 @@ import tensorflow_docs.plots
- import tensorflow_docs.modeling
+@@ -22,6 +22,7 @@ import tensorflow_docs.modeling
  
  print(tf.__version__)
--
-+name_db = "auto-mpg.data"
+ name_db = "auto-mpg.data"
++address_db = "http://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data"
  #defining function:Downloading the dataset
  def downloading_dataset(name,address):
      dataset_path = keras.utils.get_file("auto-mpg.data", "http://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data")
