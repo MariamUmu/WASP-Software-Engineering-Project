@@ -1,51 +1,14 @@
 nbdiff Regression.ipynb (HEAD) Regression.ipynb
 --- Regression.ipynb (HEAD)  (no timestamp)
-+++ Regression.ipynb  2021-04-01 13:32:23.981616
++++ Regression.ipynb  2021-04-01 13:59:00.764797
 ## modified /cells/2/source:
-@@ -101,6 +101,23 @@ def train_model(model,normed_train_data, train_labels,EP):
+@@ -97,7 +97,7 @@ def train_model(model,normed_train_data, train_labels,EP):
+     plotter.plot({'Basic': history}, metric = "mse")
+     plt.ylim([0, 20])
+     plt.ylabel('MSE [MPG^2]')
+-    return plt.show()
++    return plotter, plt.show()
  
  model = build_model()
  
-+#Making prediction
-+def prediction():
-+    test_predictions = model.predict(normed_test_data).flatten()
-+    a = plt.axes(aspect='equal')
-+    plt.scatter(test_labels, test_predictions)
-+    plt.xlabel('True Values [MPG]')
-+    plt.ylabel('Predictions [MPG]')
-+    lims = [0, 50]
-+    plt.xlim(lims)
-+    plt.ylim(lims)
-+    x_ = plt.plot(lims, lims)
-+
-+    error = test_predictions - test_labels
-+    plt.hist(error, bins = 25)
-+    plt.xlabel("Prediction Error [MPG]")
-+    x_ = plt.ylabel("Count")
-+    return plt.show()
- # The patience parameter is the amount of epochs to check for improvement
- early_stop = keras.callbacks.EarlyStopping(monitor='val_loss', patience=10)
- 
-@@ -115,20 +132,3 @@ loss, mae, mse = model.evaluate(normed_test_data, test_labels, verbose=2)
- print("Testing set Mean Abs Error: {:5.2f} MPG".format(mae))
- print("Testing set MSE: {:5.2f} MPG".format(mse))
- print("Testing set Loss: {:5.2f} MPG".format(loss))
--
--#Making prediction
--test_predictions = model.predict(normed_test_data).flatten()
--a = plt.axes(aspect='equal')
--plt.scatter(test_labels, test_predictions)
--plt.xlabel('True Values [MPG]')
--plt.ylabel('Predictions [MPG]')
--lims = [0, 50]
--plt.xlim(lims)
--plt.ylim(lims)
--x_ = plt.plot(lims, lims)
--
--error = test_predictions - test_labels
--plt.hist(error, bins = 25)
--plt.xlabel("Prediction Error [MPG]")
--x_ = plt.ylabel("Count")
-- 
-
 
